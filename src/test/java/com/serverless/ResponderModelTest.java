@@ -57,6 +57,13 @@ public class ResponderModelTest {
         assertThat(respuesta).isEqualTo("6");
     }
 
+    @Test
+    public void cualEsCuadradoYCubo(){
+        String pregunta = "*.which of the following numbers is both a square and a cube: 16, 752";
+        String respuesta = responderModel.answer(pregunta);
+        assertThat(respuesta).isEqualTo("");
+    }
+
 
 
 }

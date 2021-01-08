@@ -43,6 +43,18 @@ public class ResponderModel {
             return String.valueOf(Integer.parseInt(multiplyMatcher.group(1)) * Integer.parseInt(multiplyMatcher.group(2)));
         }
 
+        Matcher squartCubeMatcher = Pattern.compile(".*which of the following numbers is both a square and a cube: (\\d+), (\\d+)").matcher(question);
+        if (squartCubeMatcher.matches()) {
+            if(Math.sqrt(Double.parseDouble(squartCubeMatcher.group(1))) % 2 == 0
+            && Math.cbrt(Double.parseDouble(squartCubeMatcher.group(1))) % 2 == 0){
+                return squartCubeMatcher.group(1);
+            }else if(Math.sqrt(Double.parseDouble(squartCubeMatcher.group(2))) % 2 == 0
+                    && Math.cbrt(Double.parseDouble(squartCubeMatcher.group(2))) % 2 == 0){
+                return squartCubeMatcher.group(2);
+            }else return "";
+        }
+
+
         return teamName;
     }
 
