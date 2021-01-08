@@ -21,6 +21,16 @@ public class ResponderModel {
             return teamName;
         }
 
+        Matcher plusMatcher = Pattern.compile(".*what is (\\d+) plus (\\d+)").matcher(question);
+        if (plusMatcher.matches()) {
+            return String.valueOf(Integer.parseInt(plusMatcher.group(1)) + Integer.parseInt(plusMatcher.group(2)));
+        }
+
+        Matcher largestMatcher = Pattern.compile(".*which of the following numbers is the largest: (\\d+), (\\d+)").matcher(question);
+        if (largestMatcher.matches()) {
+            return Integer.parseInt(largestMatcher.group(1)) > Integer.parseInt(largestMatcher.group(2))? largestMatcher.group(1) : largestMatcher.group(2);
+        }
+
         return teamName;
     }
 
