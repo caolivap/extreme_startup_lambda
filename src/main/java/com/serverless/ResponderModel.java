@@ -38,6 +38,11 @@ public class ResponderModel {
             return Integer.parseInt(respuesta1) > Integer.parseInt(respuesta2)? respuesta1 : respuesta2;
         }
 
+        Matcher multiplyMatcher = Pattern.compile(".*what is (\\d+) multiplied by (\\d+)").matcher(question);
+        if (multiplyMatcher.matches()) {
+            return String.valueOf(Integer.parseInt(multiplyMatcher.group(1)) * Integer.parseInt(multiplyMatcher.group(2)));
+        }
+
         return teamName;
     }
 

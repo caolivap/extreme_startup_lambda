@@ -50,5 +50,13 @@ public class ResponderModelTest {
         assertThat(respuesta).isEqualTo("963");
     }
 
+    @Test
+    public void cuandoPreguntaMultiplicacion (){
+        String pregunta = "*.what is 2 multiplied by 3";
+        String respuesta = responderModel.answer(pregunta);
+        assertThat(respuesta).isEqualTo("6");
+    }
+
+
 
 }
