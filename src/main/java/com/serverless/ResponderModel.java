@@ -7,7 +7,7 @@ public class ResponderModel {
     private final String teamName = "Jovenes En Accion";
 
     public String answer(String question) {
-        if ("".equals(question)){
+        if ("".equals(question)) {
             return teamName;
         }
 
@@ -28,14 +28,14 @@ public class ResponderModel {
 
         Matcher largestMatcher = Pattern.compile(".*which of the following numbers is the largest: (\\d+), (\\d+)").matcher(question);
         if (largestMatcher.matches()) {
-            return Integer.parseInt(largestMatcher.group(1)) > Integer.parseInt(largestMatcher.group(2))? largestMatcher.group(1) : largestMatcher.group(2);
+            return Integer.parseInt(largestMatcher.group(1)) > Integer.parseInt(largestMatcher.group(2)) ? largestMatcher.group(1) : largestMatcher.group(2);
         }
 
         Matcher largestFourMatcher = Pattern.compile(".*which of the following numbers is the largest: (\\d+), (\\d+), (\\d+), (\\d+)").matcher(question);
         if (largestFourMatcher.matches()) {
-            String respuesta1 = Integer.parseInt(largestFourMatcher.group(1)) > Integer.parseInt(largestFourMatcher.group(2))? largestFourMatcher.group(1) : largestFourMatcher.group(2);
-            String respuesta2 = Integer.parseInt(largestFourMatcher.group(3)) > Integer.parseInt(largestFourMatcher.group(4))? largestFourMatcher.group(3) : largestFourMatcher.group(4);
-            return Integer.parseInt(respuesta1) > Integer.parseInt(respuesta2)? respuesta1 : respuesta2;
+            String respuesta1 = Integer.parseInt(largestFourMatcher.group(1)) > Integer.parseInt(largestFourMatcher.group(2)) ? largestFourMatcher.group(1) : largestFourMatcher.group(2);
+            String respuesta2 = Integer.parseInt(largestFourMatcher.group(3)) > Integer.parseInt(largestFourMatcher.group(4)) ? largestFourMatcher.group(3) : largestFourMatcher.group(4);
+            return Integer.parseInt(respuesta1) > Integer.parseInt(respuesta2) ? respuesta1 : respuesta2;
         }
 
         Matcher multiplyMatcher = Pattern.compile(".*what is (\\d+) multiplied by (\\d+)").matcher(question);
@@ -45,13 +45,30 @@ public class ResponderModel {
 
         Matcher squartCubeMatcher = Pattern.compile(".*which of the following numbers is both a square and a cube: (\\d+), (\\d+)").matcher(question);
         if (squartCubeMatcher.matches()) {
-            if(Math.sqrt(Double.parseDouble(squartCubeMatcher.group(1))) % 2 == 0
-            && Math.cbrt(Double.parseDouble(squartCubeMatcher.group(1))) % 2 == 0){
+            if (Math.sqrt(Double.parseDouble(squartCubeMatcher.group(1))) % 2 == 0
+                    && Math.cbrt(Double.parseDouble(squartCubeMatcher.group(1))) % 2 == 0) {
                 return squartCubeMatcher.group(1);
-            }else if(Math.sqrt(Double.parseDouble(squartCubeMatcher.group(2))) % 2 == 0
-                    && Math.cbrt(Double.parseDouble(squartCubeMatcher.group(2))) % 2 == 0){
+            } else if (Math.sqrt(Double.parseDouble(squartCubeMatcher.group(2))) % 2 == 0
+                    && Math.cbrt(Double.parseDouble(squartCubeMatcher.group(2))) % 2 == 0) {
                 return squartCubeMatcher.group(2);
-            }else return "";
+            } else return "";
+        }
+
+        Matcher squartCubeFourMatcher = Pattern.compile(".*which of the following numbers is both a square and a cube: (\\d+), (\\d+), (\\d+), (\\d+)").matcher(question);
+        if (squartCubeFourMatcher.matches()) {
+            if (Math.sqrt(Double.parseDouble(squartCubeFourMatcher.group(1))) % 2 == 0
+                    && Math.cbrt(Double.parseDouble(squartCubeFourMatcher.group(1))) % 2 == 0) {
+                return squartCubeFourMatcher.group(1);
+            } else if (Math.sqrt(Double.parseDouble(squartCubeFourMatcher.group(2))) % 2 == 0
+                    && Math.cbrt(Double.parseDouble(squartCubeFourMatcher.group(2))) % 2 == 0) {
+                return squartCubeFourMatcher.group(2);
+            } else if (Math.sqrt(Double.parseDouble(squartCubeFourMatcher.group(3))) % 2 == 0
+                    && Math.cbrt(Double.parseDouble(squartCubeFourMatcher.group(3))) % 2 == 0) {
+                return squartCubeFourMatcher.group(3);
+            } else if (Math.sqrt(Double.parseDouble(squartCubeFourMatcher.group(4))) % 2 == 0
+                    && Math.cbrt(Double.parseDouble(squartCubeFourMatcher.group(4))) % 2 == 0) {
+                return squartCubeFourMatcher.group(4);
+            } else return "";
         }
 
 

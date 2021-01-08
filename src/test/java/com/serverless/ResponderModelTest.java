@@ -59,9 +59,16 @@ public class ResponderModelTest {
 
     @Test
     public void cualEsCuadradoYCubo(){
-        String pregunta = "*.which of the following numbers is both a square and a cube: 16, 752";
+        String pregunta = "*.which of the following numbers is both a square and a cube: 1000000, 173";
         String respuesta = responderModel.answer(pregunta);
-        assertThat(respuesta).isEqualTo("");
+        assertThat(respuesta).isEqualTo("1000000");
+    }
+
+    @Test
+    public void cualEsCuadradoYCuboDe4(){
+        String pregunta = "*.which of the following numbers is both a square and a cube: 173, 441, 1000000, 269";
+        String respuesta = responderModel.answer(pregunta);
+        assertThat(respuesta).isEqualTo("1000000");
     }
 
 
