@@ -38,9 +38,17 @@ public class ResponderModelTest {
 
     @Test
     public void largest(){
-        String pregunta = ".*which of the following numbers is the largest: 16, 22";
+        String pregunta = ".*which of the following numbers is the largest: 616, 22";
         String respuesta = responderModel.answer(pregunta);
-        assertThat(respuesta).isEqualTo("22");
+        assertThat(respuesta).isEqualTo("616");
     }
+
+    @Test
+    public void cualEsElNumeroMasGrande4(){
+        String pregunta = "*.which of the following numbers is the largest: 69, 355, 963, 85";
+        String respuesta = responderModel.answer(pregunta);
+        assertThat(respuesta).isEqualTo("963");
+    }
+
 
 }

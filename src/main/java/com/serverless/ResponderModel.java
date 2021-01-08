@@ -31,6 +31,13 @@ public class ResponderModel {
             return Integer.parseInt(largestMatcher.group(1)) > Integer.parseInt(largestMatcher.group(2))? largestMatcher.group(1) : largestMatcher.group(2);
         }
 
+        Matcher largestFourMatcher = Pattern.compile(".*which of the following numbers is the largest: (\\d+), (\\d+), (\\d+), (\\d+)").matcher(question);
+        if (largestFourMatcher.matches()) {
+            String respuesta1 = Integer.parseInt(largestFourMatcher.group(1)) > Integer.parseInt(largestFourMatcher.group(2))? largestFourMatcher.group(1) : largestFourMatcher.group(2);
+            String respuesta2 = Integer.parseInt(largestFourMatcher.group(3)) > Integer.parseInt(largestFourMatcher.group(4))? largestFourMatcher.group(3) : largestFourMatcher.group(4);
+            return Integer.parseInt(respuesta1) > Integer.parseInt(respuesta2)? respuesta1 : respuesta2;
+        }
+
         return teamName;
     }
 
